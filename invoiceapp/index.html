@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Invoice App</title>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1683134855229218",
+          enable_page_level_ads: true
+     });
+</script> -->
+
+  </head>
+  <body class="container mt-5">
+
+      <h1>Invoice App by To0ns</h1><br>
+
+    <h1>Peronal Info
+      <div id="docType" class="dropdown mb-2" style="display: inline-block">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="docTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Invoice
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button id="invoice" class="dropdown-item" type="button" style="display: none;">Invoice</button>
+          <button id="statement" class="dropdown-item" type="button">Statement</button>
+        </div>
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <div id="saveInfo" class="btn btn-secondary" title="Click plus sign to save your personal information!">Save My Info?</div><button id="storeBtn" class="btn btn-secondary">+</button>
+      </div> 
+      
+
+        <!-- <div id="saveAlert" class="alert alert-warning alert-dismissible collapse" role="alert" style="display: inline-block; font-size: 16px; font-weight: normal;">Your information has been saved
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div id="removeAlert" class="alert alert-warning alert-dismissible collapse" role="alert" style="display: inline-block; font-size: 16px; font-weight: normal;">Your information has been removed
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+
+    </h1>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Company Name</button>
+      </div>
+      <input id="companyName" type="text" class="form-control" placeholder="type here..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Address</button>
+      </div>
+      <input id="address" type="text" class="form-control" placeholder="..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>City, State, ZIP</button>
+      </div>
+      <input id="cityStateZIP" type="text" class="form-control" placeholder="..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Phone</button>
+      </div>
+      <input id="phone" type="text" class="form-control" placeholder="..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+
+    <br>
+    <h1>Bill To Info</h1>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Bill To</button>
+      </div>
+      <input id="billTo" type="text" class="form-control" placeholder="name..." aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+    </div>
+
+    <br>
+    
+    <h1 class="shadow-none">Description Info <button id="addLineButton" class="btn btn-secondary mb-2">Add Line +</button></h1>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Work Line 1</button>
+      </div>
+      <input type="text" class="form-control workLine" placeholder="work info..." aria-label="Recipient's username" aria-describedby="button-addon2">      
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Amount</button>
+      </div>
+      <input type="text" class="form-control workLineAmount" placeholder="0.00" aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>   
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Work Line 2</button>
+      </div>
+      <input type="text" class="form-control workLine" placeholder="..." aria-label="Recipient's username" aria-describedby="button-addon2">      
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Amount</button>
+      </div>
+      <input type="text" class="form-control workLineAmount" placeholder="0.00" aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Work Line 3</button>
+      </div>
+      <input type="text" class="form-control workLine" placeholder="..." aria-label="Recipient's username" aria-describedby="button-addon2">      
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-secondary w-100" type="button" id="button-addon1" disabled>Amount</button>
+      </div>
+      <input type="text" class="form-control workLineAmount" placeholder="0.00" aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+
+    <br>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-primary w-100" type="button" id="button-addon1" disabled>Tax</button>
+      </div>
+      <div id="tax" type="text" class="form-control border border-primary border-right-0" placeholder="0%" aria-label="Recipient's username" aria-describedby="button-addon2">0%</div>      
+      <div class="input-group-prepend w-25">
+        <button class="btn btn-primary w-100" type="button" id="button-addon1" disabled>Total</button>
+      </div>
+      <div id="total" type="text" class="form-control border border-primary" placeholder="0.00" aria-label="Recipient's username" aria-describedby="button-addon2">0.00</div>  
+    </div>
+
+    <br>
+
+    <h1>Other Comments</h1>
+
+    <div class="mb-3">
+      <textarea id="otherComments" class="form-control" placeholder="Other comments..."></textarea>
+    </div>
+
+    <br>
+
+    <button id="preview" class="btn btn-secondary mb-2 w-100">Preview</button></h1>
+
+    
+    
+    
+    
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
