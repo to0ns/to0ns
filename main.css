@@ -1,0 +1,38 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  font-weight: 900;
+}
+
+.bg-white {
+  border-radius: 25px;
+}
+
+input {
+  background: none;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid;
+  position: relative;
+  top: -7px;
+  left: -30px;
+  padding-left: 35px;
+}
+
+.workLine {
+  padding-right: 75px;
+}
+
+.workLineAmount {
+  width: 125px;
+}
+
+i {
+  position: relative;
+  top: -3px;
+}
+
