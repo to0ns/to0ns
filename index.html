@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Invoice App</title>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1683134855229218",
+          enable_page_level_ads: true
+     });
+</script> -->
+
+  </head>
+  <body class="bg-light text-muted pt-5">
+
+    <div class="bg-white col-xl-8 m-auto shadow-sm"><!-- MAIN CONTAINER 1 -->
+      <div class="container pt-5 mb-5"><!-- main heading container -->
+      
+        <div class="d-inline-block">
+          <h1>Invoice App by To0ns</h1>
+        </div>
+      
+
+        <div id="docType" class="dropdown d-inline-block"><!-- dropdown -->
+          <button id="docTypeDropdown" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Invoice</button>
+          <div class="dropdown-menu">
+            <button id="invoice" class="dropdown-item d-none">Invoice</button>
+            <button id="statement" class="dropdown-item">Statement</button>
+          </div>
+        </div><!-- /dropdown -->
+
+        <div class="btn-group"><!-- save info button -->
+          <div id="saveInfo" class="btn btn-secondary" title="Click plus sign to save your personal information!">Save My Info?</div>
+          <button id="storeBtn" class="btn btn-secondary">+</button>
+        </div><!-- /save info button -->
+
+      </div><!-- /main heading container -->
+
+      <div class="container mb-5"><!-- personal info container -->
+      
+        <div class="mb-3"><!-- peronsal info heading -->
+          <h2 class="">Personal Info</h2>
+        </div><!-- /personal info heading -->
+
+        <div>
+          <div class="">
+            <label for="companyName"><i class="material-icons">business</i></label>
+            <input type="text" id="companyName" placeholder="Company Name">
+          </div>
+                    
+          <div class="">
+            <label for="address"><i class="material-icons">home</i></i></label>
+            <input type="text" id="address" placeholder="Address">
+          </div>
+
+          <div class="">
+            <label for="cityStateZIP"><i class="material-icons">location_on</i></i></label>
+            <input type="text" id="cityStateZIP" placeholder="City, State ZIP">
+          </div>
+
+          <div class="">
+            <label for="phone"><i class="material-icons">phone</i></i></label>
+            <input type="text" id="phone" placeholder="Phone">
+          </div>
+        </div>
+
+      </div><!-- /personal info container -->
+
+      <div class="container pb-5 mb-5"><!-- bill to container -->
+
+        <div>
+          <h2>Bill To Info</h1>
+        </div>
+      
+        <div>
+          <div class="">
+            <label for="billTo"><i class="material-icons">attach_money</i></label>
+            <input class="input" type="text" id="billTo" placeholder="Bill To">
+          </div>
+        </div>
+      
+      </div><!-- /bill to container -->
+    </div><!-- /MAIN CONTAINER 1 -->
+        
+    <div class="bg-white col-xl-8 m-auto shadow-sm"><!-- MAIN CONTAINER 2 -->
+      <div class="container pt-5 mb-5"><!-- description info container -->
+        
+          <div class="mb-3"><!-- description info heading -->
+            <h2 class="">Description Info</h2>
+          </div><!-- /description info heading -->
+        
+          <div id="description-container" class="mb-3">
+            <div class="">
+              <label for="WorkLine1"><i class="material-icons">work</i></label>
+              <input class="workLine" type="text" id="WorkLine1" placeholder="work info...">
+              <label for="amount1"><i class="material-icons">attach_money</i></label>
+              <input class="workLineAmount" type="text" id="amount1" placeholder="0.00">
+            </div>
+                      
+            <div class="">
+              <label for="WorkLine2"><i class="material-icons">work</i></i></label>
+              <input class="workLine" type="text" id="WorkLine2" placeholder="...">
+              <label for="amount2"><i class="material-icons">attach_money</i></label>
+              <input class="workLineAmount" type="text" id="amount2" placeholder="0.00">
+            </div>
+
+            <div class="">
+              <label for="WorkLine3"><i class="material-icons">work</i></i></label>
+              <input class="workLine" type="text" id="WorkLine3" placeholder="...">
+              <label for="amount3"><i class="material-icons">attach_money</i></label>
+              <input class="workLineAmount" type="text" id="amount3" placeholder="0.00">
+            </div>
+
+            <div class="">
+              <button id="addLineButton" class="btn btn-secondary mb-2">Add Line +</button>
+            </div>
+          </div>
+
+            <div class="">
+              <label class="tax-label" for="tax"><i class="material-icons tax-icon">money_off</i></i></label>
+              <input class="tax" type="text" id="tax" placeholder="tax" disabled>
+              <label for="total"><i class="material-icons">monetization_on</i></label>
+              <input class="total" type="text" id="total" placeholder="total" disabled>
+            </div>
+      </div><!-- /description info container -->
+      
+      <div class="container mb-5"><!-- other comments container -->
+        
+          <div class="mb-3"><!-- description info heading -->
+            <h2 class="">Other Comments</h2>
+          </div><!-- /description info heading -->
+        
+          <div id="description-container" class="mb-3">
+            <div class="">
+              <textarea id="otherComments" placeholder="Other comments..."></textarea>
+            </div>
+        </div>
+      </div><!-- /other comments container -->
+     
+      <button id="preview" class="btn btn-secondary mb-5">Generate PDF</button>
+    </div><!-- /MAIN CONTAINER 2 -->
+
+    
+    
+    
+    
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
